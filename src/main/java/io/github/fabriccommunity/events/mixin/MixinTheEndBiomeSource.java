@@ -11,6 +11,9 @@ import io.github.fabriccommunity.events.BiomePlacementCallback;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.TheEndBiomeSource;
 
+/**
+ * @author Valoeghese
+ */
 @Mixin(TheEndBiomeSource.class)
 public class MixinTheEndBiomeSource {
 	@Inject(at = @At("RETURN"), method = "getBiomeForNoiseGen", cancellable = true)

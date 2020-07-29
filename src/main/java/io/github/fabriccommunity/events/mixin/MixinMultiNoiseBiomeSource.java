@@ -11,6 +11,9 @@ import io.github.fabriccommunity.events.BiomePlacementCallback;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
 
+/**
+ * @author Valoeghese
+ */
 @Mixin(MultiNoiseBiomeSource.class)
 public class MixinMultiNoiseBiomeSource {
 	@Inject(at = @At("RETURN"), method = "getBiomeForNoiseGen", cancellable = true)

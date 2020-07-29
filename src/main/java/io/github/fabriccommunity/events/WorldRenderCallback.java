@@ -10,6 +10,7 @@ import net.minecraft.util.math.Matrix4f;
 /**
  * Called at the end of vanilla world rendering, to allow for mods to add their own rendering.
  * @author Valoeghese
+ * @apiNote this event is client side only.
  */
 @FunctionalInterface
 public interface WorldRenderCallback {

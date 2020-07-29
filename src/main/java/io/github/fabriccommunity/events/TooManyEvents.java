@@ -5,6 +5,9 @@ import org.apache.logging.log4j.Logger;
 
 import net.fabricmc.api.ModInitializer;
 
+/**
+ * @author Valoeghese
+ */
 public class TooManyEvents implements ModInitializer {
 	public static final Logger LOGGER = LogManager.getLogger("TooManyEvents");
 

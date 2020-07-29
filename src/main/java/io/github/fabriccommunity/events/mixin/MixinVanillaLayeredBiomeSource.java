@@ -11,6 +11,9 @@ import io.github.fabriccommunity.events.BiomePlacementCallback;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.VanillaLayeredBiomeSource;
 
+/**
+ * @author Valoeghese
+ */
 @Mixin(VanillaLayeredBiomeSource.class)
 public class MixinVanillaLayeredBiomeSource {
 	@Inject(at = @At("RETURN"), method = "getBiomeForNoiseGen", cancellable = true)
