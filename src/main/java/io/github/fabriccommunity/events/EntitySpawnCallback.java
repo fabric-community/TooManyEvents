@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.world.ServerWorldAccess;
 
 /**
  * Collection of events for entity spawning.
@@ -57,7 +57,7 @@ public final class EntitySpawnCallback {
 		 * <li>{@code FAIL} cancel spawning the entity.
 		 * </ul>
 		 */
-		ActionResult onEntitySpawnPre(Entity original, AtomicReference<Entity> entity, WorldAccess world, SpawnReason reason);
+		ActionResult onEntitySpawnPre(Entity original, AtomicReference<Entity> entity, ServerWorldAccess world, SpawnReason reason);
 	}
 
 	/**
@@ -72,6 +72,6 @@ public final class EntitySpawnCallback {
 		 * @param pos the position at which the entity spawned.
 		 * @param reason the cause for the entity spawn.
 		 */
-		void onEntitySpawnPost(Entity entity, WorldAccess world, Vec3d pos, SpawnReason reason);
+		void onEntitySpawnPost(Entity entity, ServerWorldAccess world, Vec3d pos, SpawnReason reason);
 	}
 }

@@ -19,15 +19,15 @@ import net.minecraft.util.ActionResult;
 @Mixin(SummonCommand.class)
 public class MixinSummonCommand {
 	@Redirect(
-			at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;tryLoadEntity(Lnet/minecraft/entity/Entity;)Z"),
-			method = "method_18192(Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/Entity;)Lnet/minecraft/entity/Entity;")
+			at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;method_30736(Lnet/minecraft/entity/Entity;)Z"),
+			method = "execute(Lnet/minecraft/server/command/ServerCommandSource;Lnet/minecraft/util/Identifier;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/nbt/CompoundTag;Z)I")
 	private static boolean entitySpawnEventCommand(ServerWorld self, Entity entity) {
 		AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
 		ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, self, SpawnReason.COMMAND);
 		entity = currentEntity.get();
 
 		if (result == ActionResult.SUCCESS) {
-			if (self.spawnEntity(entity)) {
+			if (self.method_30736(entity)) {
 				EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, self, entity.getPos(), SpawnReason.COMMAND);
 				return true;
 			}
