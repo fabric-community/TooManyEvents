@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.fabricommunity.events.TooManyEvents"
+      "io.github.fabriccommunity.events.TooManyEvents"
     ]
   },
   "mixins": [
