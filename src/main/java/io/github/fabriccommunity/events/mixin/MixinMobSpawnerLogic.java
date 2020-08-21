@@ -20,12 +20,12 @@ public class MixinMobSpawnerLogic {
 			)
 	private boolean epic_entitySpawnEventSpawner(World self, Entity entity) {
 		AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
-		ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, self, true);
+		ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, self, false);
 		entity = currentEntity.get();
 
 		if (result == ActionResult.SUCCESS) {
 			if (self.spawnEntity(entity)) {
-				EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, self, entity.getPos(), true);
+				EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, self, entity.getPos(), false);
 				return true;
 			}
 		}
