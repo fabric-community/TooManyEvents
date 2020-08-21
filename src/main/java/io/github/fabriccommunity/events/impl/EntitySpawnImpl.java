@@ -37,6 +37,21 @@ public class EntitySpawnImpl {
 		}
 	}
 
+	public static Entity spawnEntityE(Entity entity, ServerWorld serverWorld, SpawnReason spawnReason) {
+		if (entity != null) {
+			AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
+			ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, serverWorld, spawnReason);
+			entity = result != ActionResult.FAIL ? currentEntity.get() : null;
+		}
+
+		if (entity != null) {
+			serverWorld.spawnEntityAndPassengers(entity);
+			EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, serverWorld, entity.getPos(), spawnReason);
+		}
+
+		return entity;
+	}
+
 	public static ActionResult eventPre(Entity original, AtomicReference<Entity> entity, ServerWorldAccess world, SpawnReason reason, Pre[] listeners) {
 		for (EntitySpawnCallback.Pre callback : listeners) {
 			ActionResult result = callback.onEntitySpawnPre(original, entity, world, reason);
