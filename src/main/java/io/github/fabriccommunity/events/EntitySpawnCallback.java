@@ -2,6 +2,7 @@ package io.github.fabriccommunity.events;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.github.fabriccommunity.events.impl.EntitySpawnImpl;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.entity.Entity;
@@ -17,19 +18,7 @@ public final class EntitySpawnCallback {
 	/**
 	 * Callback for before the entity spawns. Use this to cancel, force succeed, or alter the entity spawning.
 	 */
-	public static final Event<EntitySpawnCallback.Pre> PRE = EventFactory.createArrayBacked(EntitySpawnCallback.Pre.class, listeners -> (original, entity, world, reason) -> {
-		for (EntitySpawnCallback.Pre callback : listeners) {
-			ActionResult result = callback.onEntitySpawnPre(original, entity, world, reason);
-
-			if (result == ActionResult.CONSUME) {
-				return ActionResult.SUCCESS;
-			} else if (result != ActionResult.PASS) {
-				return result;
-			}
-		}
-
-		return ActionResult.SUCCESS;
-	});
+	public static final Event<EntitySpawnCallback.Pre> PRE = EventFactory.createArrayBacked(EntitySpawnCallback.Pre.class, listeners -> (original, entity, world, reason) -> EntitySpawnImpl.eventPre(original, entity, world, reason, listeners));
 
 	/**
 	 * Callback for after the entity succeeds in spawning. Use this for general functions after an entity has spawned.
