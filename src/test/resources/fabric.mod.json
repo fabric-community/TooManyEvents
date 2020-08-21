@@ -1,13 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "toomanyevents",
+  "id": "toomanyevents_test",
   "version": "${version}",
 
-  "name": "Too Many Events",
-  "description": "More events for modders to use",
+  "name": "Too Many Events Test",
+  "description": "Yes",
   "authors": [
-    "Valoeghese",
-	"HalfOf2"
+    "Valoeghese"
   ],
 
   "license": "MIT",
@@ -16,16 +15,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.fabriccommunity.events.TooManyEvents"
+      "io.github.fabriccommunity.events.test.EntitySpawnTest"
     ]
   },
-  "mixins": [
-    "toomanyevents.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.16.x",
+    "toomanyevents": "*"
   }
 }
