@@ -32,7 +32,6 @@ public class EntitySpawnImpl {
 		entity = currentEntity.get();
 
 		if (result != ActionResult.FAIL) {
-			System.out.println(entity);
 			self.spawnEntityAndPassengers(entity);
 			EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, self, entity.getPos(), SpawnReason.NATURAL);
 		}
