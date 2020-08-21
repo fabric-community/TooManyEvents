@@ -1,4 +1,4 @@
-package io.github.fabriccommunity.events;
+package io.github.fabriccommunity.events.network;
 
 import java.net.SocketAddress;
 import java.util.concurrent.atomic.AtomicReference;

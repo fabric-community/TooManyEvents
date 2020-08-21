@@ -1,6 +1,6 @@
 package io.github.fabriccommunity.events.test;
 
-import io.github.fabriccommunity.events.EntitySpawnCallback;
+import io.github.fabriccommunity.events.world.EntitySpawnCallback;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;

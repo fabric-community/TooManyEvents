@@ -15,6 +15,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
+      "io.github.fabriccommunity.events.test.BiomePlacementTest",
       "io.github.fabriccommunity.events.test.EntitySpawnTest"
     ]
   },

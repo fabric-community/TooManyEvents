@@ -1,4 +1,4 @@
-package io.github.fabriccommunity.events;
+package io.github.fabriccommunity.events.render;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;

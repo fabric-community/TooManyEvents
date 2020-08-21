@@ -1,4 +1,4 @@
-package io.github.fabriccommunity.events;
+package io.github.fabriccommunity.events.world;
 
 import java.util.concurrent.atomic.AtomicReference;
 

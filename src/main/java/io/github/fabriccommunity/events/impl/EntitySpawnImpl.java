@@ -2,8 +2,8 @@ package io.github.fabriccommunity.events.impl;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-import io.github.fabriccommunity.events.EntitySpawnCallback;
-import io.github.fabriccommunity.events.EntitySpawnCallback.Pre;
+import io.github.fabriccommunity.events.world.EntitySpawnCallback;
+import io.github.fabriccommunity.events.world.EntitySpawnCallback.Pre;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.server.world.ServerWorld;

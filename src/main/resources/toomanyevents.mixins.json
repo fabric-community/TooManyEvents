@@ -4,17 +4,19 @@
   "package": "io.github.fabriccommunity.events.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinEntityType",
-    "MixinMobSpawnerLogic",
-    "MixinMultiNoiseBiomeSource",
-    "MixinPlayerManager",
-    "MixinSpawnHelper",
-    "MixinSummonCommand",
-    "MixinTheEndBiomeSource",
-    "MixinVanillaLayeredBiomeSource"
+    "biomegen.MixinMultiNoiseBiomeSource",
+    "biomegen.MixinTheEndBiomeSource",
+    "biomegen.MixinVanillaLayeredBiomeSource",
+    "player.MixinPlayerEntity",
+    "player.MixinPlayerManager",
+    "spawn.MixinEntityType",
+    "spawn.MixinMobSpawnerLogic",
+    "spawn.MixinSpawnHelper",
+    "spawn.MixinSummonCommand"
   ],
   "client": [
-    "MixinWorldRenderer"
+    "client.MixinBackgroundRenderer",
+    "client.MixinWorldRenderer"
   ],
   "injectors": {
     "defaultRequire": 1
