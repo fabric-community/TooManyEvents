@@ -14,6 +14,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.world.SpawnHelper;
 import net.minecraft.world.WorldAccess;
 
+/**
+ * @author Valoeghese
+ */
 @Mixin(SpawnHelper.class)
 public class MixinSpawnHelper {
 	@Redirect(

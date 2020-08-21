@@ -13,6 +13,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.world.MobSpawnerLogic;
 import net.minecraft.world.World;
 
+/**
+ * @author Valoeghese
+ */
 @Mixin(MobSpawnerLogic.class)
 public class MixinMobSpawnerLogic {
 	@Redirect(

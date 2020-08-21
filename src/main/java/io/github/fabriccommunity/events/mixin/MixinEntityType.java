@@ -17,6 +17,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * @author Valoeghese
+ */
 @Mixin(EntityType.class)
 public class MixinEntityType {
 	@Redirect(
