@@ -8,6 +8,7 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.math.Vec3d;
 
 public class EntitySpawnTest implements ModInitializer {
 	public static final boolean ENABLED = true;
@@ -17,7 +18,11 @@ public class EntitySpawnTest implements ModInitializer {
 		if (ENABLED) {
 			EntitySpawnCallback.PRE.register((original, entity, world, reason) -> {
 				if (reason == SpawnReason.SPAWN_EGG && original.getType() == EntityType.CREEPER) {
-					entity.set(new PigEntity(EntityType.PIG, world.getWorld()));
+					PigEntity pig = new PigEntity(EntityType.PIG, world.getWorld());
+					Vec3d pos = original.getPos();
+					pig.refreshPositionAndAngles(pos.x, pos.y, pos.z, original.yaw, original.pitch);
+					pig.initialize(world, world.getLocalDifficulty(original.getBlockPos()), reason, null, null);
+					entity.set(pig);
 				}
 
 				return ActionResult.PASS;
