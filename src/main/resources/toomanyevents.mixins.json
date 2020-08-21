@@ -4,6 +4,7 @@
   "package": "io.github.fabriccommunity.events.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinEntityType",
     "MixinMobSpawnerLogic",
     "MixinMultiNoiseBiomeSource",
     "MixinPlayerManager",
