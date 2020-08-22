@@ -19,7 +19,7 @@ public final class WorldGenImpl {
 	 */
 	public static void onBiomePlaced(BiomeSource source, Registry<Biome> registry, int genX, int genZ, CallbackInfoReturnable<Biome> info) {
 		Biome original = info.getReturnValue();
-		AtomicReference<Biome> biome = new AtomicReference<Biome>();
+		AtomicReference<Biome> biome = new AtomicReference<Biome>(original);
 		ActionResult result = WorldGenEvents.BIOME_PLACEMENT.invoker().onBiomePlace(source, registry, original, biome, genX, genZ);
 
 		if (result != ActionResult.FAIL) {
