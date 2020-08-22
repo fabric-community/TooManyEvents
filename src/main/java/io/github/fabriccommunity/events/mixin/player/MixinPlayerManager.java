@@ -1,4 +1,4 @@
-package io.github.fabriccommunity.events.mixin;
+package io.github.fabriccommunity.events.mixin.player;
 
 import java.net.SocketAddress;
 import java.util.concurrent.atomic.AtomicReference;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.mojang.authlib.GameProfile;
 
-import io.github.fabriccommunity.events.PlayerLoginCallback;
+import io.github.fabriccommunity.events.network.PlayerLoginCallback;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.text.Text;
 

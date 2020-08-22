@@ -1,0 +1,81 @@
+package io.github.fabriccommunity.events.impl;
+
+import java.util.concurrent.atomic.AtomicReference;
+
+import io.github.fabriccommunity.events.world.EntitySpawnCallback;
+import io.github.fabriccommunity.events.world.EntitySpawnCallback.Pre;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.world.ServerWorldAccess;
+
+public final class EntitySpawnImpl {
+	private EntitySpawnImpl() {
+	}
+
+	/**
+	 * @author Valoeghese
+	 */
+	public static boolean spawnEntityZ(ServerWorld self, Entity entity) {
+		AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
+		ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, self, SpawnReason.COMMAND);
+		entity = currentEntity.get();
+
+		if (result != ActionResult.FAIL) {
+			if (self.method_30736(entity)) {
+				EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, self, entity.getPos(), SpawnReason.COMMAND);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * @author Valoeghese
+	 */
+	public static void spawnEntityV(ServerWorldAccess self, Entity entity) {
+		AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
+		ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, self, SpawnReason.NATURAL);
+		entity = currentEntity.get();
+
+		if (result != ActionResult.FAIL) {
+			self.spawnEntityAndPassengers(entity);
+			EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, self, entity.getPos(), SpawnReason.NATURAL);
+		}
+	}
+
+	/**
+	 * @author Valoeghese
+	 */
+	public static Entity spawnEntityE(Entity entity, ServerWorld serverWorld, SpawnReason spawnReason) {
+		if (entity != null) {
+			AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
+			ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, serverWorld, spawnReason);
+			entity = result != ActionResult.FAIL ? currentEntity.get() : null;
+		}
+
+		if (entity != null) {
+			serverWorld.spawnEntityAndPassengers(entity);
+			EntitySpawnCallback.POST.invoker().onEntitySpawnPost(entity, serverWorld, entity.getPos(), spawnReason);
+		}
+
+		return entity;
+	}
+
+	/**
+	 * @author Valoeghese
+	 */
+	public static ActionResult eventPre(Entity original, AtomicReference<Entity> entity, ServerWorldAccess world, SpawnReason reason, Pre[] listeners) {
+		for (EntitySpawnCallback.Pre callback : listeners) {
+			ActionResult result = callback.onEntitySpawnPre(original, entity, world, reason);
+
+			if (result != ActionResult.PASS) {
+				return result;
+			}
+		}
+
+		return ActionResult.PASS;
+	}
+}

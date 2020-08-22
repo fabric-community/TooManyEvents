@@ -1,14 +1,15 @@
-package io.github.fabriccommunity.events;
+package io.github.fabriccommunity.events.world;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.github.fabriccommunity.events.impl.EntitySpawnImpl;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.world.ServerWorldAccess;
 
 /**
  * Collection of events for entity spawning.
@@ -17,19 +18,7 @@ public final class EntitySpawnCallback {
 	/**
 	 * Callback for before the entity spawns. Use this to cancel, force succeed, or alter the entity spawning.
 	 */
-	public static final Event<EntitySpawnCallback.Pre> PRE = EventFactory.createArrayBacked(EntitySpawnCallback.Pre.class, listeners -> (original, entity, world, reason) -> {
-		for (EntitySpawnCallback.Pre callback : listeners) {
-			ActionResult result = callback.onEntitySpawnPre(original, entity, world, reason);
-
-			if (result == ActionResult.CONSUME) {
-				return ActionResult.SUCCESS;
-			} else if (result != ActionResult.PASS) {
-				return result;
-			}
-		}
-
-		return ActionResult.SUCCESS;
-	});
+	public static final Event<EntitySpawnCallback.Pre> PRE = EventFactory.createArrayBacked(EntitySpawnCallback.Pre.class, listeners -> (original, entity, world, reason) -> EntitySpawnImpl.eventPre(original, entity, world, reason, listeners));
 
 	/**
 	 * Callback for after the entity succeeds in spawning. Use this for general functions after an entity has spawned.
@@ -57,7 +46,7 @@ public final class EntitySpawnCallback {
 		 * <li>{@code FAIL} cancel spawning the entity.
 		 * </ul>
 		 */
-		ActionResult onEntitySpawnPre(Entity original, AtomicReference<Entity> entity, WorldAccess world, SpawnReason reason);
+		ActionResult onEntitySpawnPre(final Entity original, AtomicReference<Entity> entity, ServerWorldAccess world, SpawnReason reason);
 	}
 
 	/**
@@ -72,6 +61,6 @@ public final class EntitySpawnCallback {
 		 * @param pos the position at which the entity spawned.
 		 * @param reason the cause for the entity spawn.
 		 */
-		void onEntitySpawnPost(Entity entity, WorldAccess world, Vec3d pos, SpawnReason reason);
+		void onEntitySpawnPost(Entity entity, ServerWorldAccess world, Vec3d pos, SpawnReason reason);
 	}
 }

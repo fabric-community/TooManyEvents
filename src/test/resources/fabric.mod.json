@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "toomanyevents_test",
+  "version": "${version}",
+
+  "name": "Too Many Events Test",
+  "description": "Yes",
+  "authors": [
+    "Valoeghese"
+  ],
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.fabriccommunity.events.test.BiomePlacementTest",
+      "io.github.fabriccommunity.events.test.EntitySpawnTest",
+      "io.github.fabriccommunity.events.test.PlayerInteractionTest"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x",
+    "toomanyevents": "*"
+  }
+}
