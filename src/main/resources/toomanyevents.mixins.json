@@ -7,6 +7,8 @@
     "biomegen.MixinMultiNoiseBiomeSource",
     "biomegen.MixinTheEndBiomeSource",
     "biomegen.MixinVanillaLayeredBiomeSource",
+    "item.MixinItem",
+    "player.MixinHungerManager",
     "player.MixinPlayerEntity",
     "player.MixinPlayerManager",
     "spawn.MixinEntityType",

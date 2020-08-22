@@ -16,6 +16,7 @@
   "entrypoints": {
     "main": [
       "io.github.fabriccommunity.events.test.BiomePlacementTest",
+      "io.github.fabriccommunity.events.test.FoodTest",
       "io.github.fabriccommunity.events.test.EntitySpawnTest",
       "io.github.fabriccommunity.events.test.PlayerInteractionTest"
     ],

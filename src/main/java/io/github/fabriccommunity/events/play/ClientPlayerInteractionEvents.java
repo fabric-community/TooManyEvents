@@ -50,9 +50,11 @@ public final class ClientPlayerInteractionEvents {
          * @param hitResult the result of the hit (miss/block/entity), might be null.
          *
          * @return
-         * {@code SUCCESS} or {@code CONSUME} cancels further event processing and swings the player's arms.
-         * {@code PASS} pass event handling on to further processing. If all listeners pass, vanilla behavior is executed instead.
-         * {@code FAIL} cancels further event processing without swinging the player's arms.
+         * <ul>
+         * <li>{@code SUCCESS} or {@code CONSUME} cancels further event processing and swings the player's arms.
+         * <li>{@code PASS} pass event handling on to further processing. If all listeners pass, vanilla behavior is executed instead.
+         * <li>{@code FAIL} cancels further event processing without swinging the player's arms.
+         * </ul>
          */
         ActionResult onAttackKeyPress(ClientPlayerEntity player, /* @Nullable */ HitResult hitResult);
     }
@@ -70,9 +72,11 @@ public final class ClientPlayerInteractionEvents {
          * @param hitResult the result of the hit (miss/block/entity), might be null.
          *
          * @return
-         * {@code SUCCESS} or {@code CONSUME} cancels further event processing and swings the player's arms.
-         * {@code PASS} pass event handling on to further processing. If all listeners pass, vanilla behavior is executed instead.
-         * {@code FAIL} cancels further event processing without swinging the player's arms.
+         * <ul>
+         * <li>{@code SUCCESS} or {@code CONSUME} cancels further event processing and swings the player's arms.
+         * <li>{@code PASS} pass event handling on to further processing. If all listeners pass, vanilla behavior is executed instead.
+         * <li>{@code FAIL} cancels further event processing without swinging the player's arms.
+         * </ul>
          */
         ActionResult onAttackKeyHold(ClientPlayerEntity player, /* @Nullable */ HitResult hitResult);
     }
