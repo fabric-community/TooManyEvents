@@ -22,9 +22,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftClient.class)
 public class MixinMinecraftClient {
 
-    @Shadow public ClientPlayerEntity player;
-    @Shadow public HitResult crosshairTarget;
-    @Shadow @Final public GameOptions options;
+    @Shadow private ClientPlayerEntity player;
+    @Shadow private HitResult crosshairTarget;
+    @Shadow @Final private GameOptions options;
 
     private boolean shouldSwing = false;
 
