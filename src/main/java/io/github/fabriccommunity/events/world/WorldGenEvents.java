@@ -43,9 +43,11 @@ public final class WorldGenEvents {
 		 * @param genX the generation x of the biome. Equal to {@code x >> 2}.
 		 * @param genZ the generation z of the biome. Equal to {@code z >> 2}.
 		 * @return
-		 * {@code SUCCESS} or {@code CONSUME} to cancel further event processing and return the biome stored in the {@code biome} parameter.
-		 * {@code PASS} to pass the event on to further event processing. If all listeners pass, it is treated as a {@code SUCCESS}
-		 * {@code FAIL} to cancel further event processing and return the original biome.
+		 * <ul>
+		 * <li>{@code SUCCESS} or {@code CONSUME} to cancel further event processing and return the biome stored in the {@code biome} parameter.
+		 * <li>{@code PASS} to pass the event on to further event processing. If all listeners pass, it is treated as a {@code SUCCESS}
+		 * <li>{@code FAIL} to cancel further event processing and return the original biome.
+		 * </ul>
 		 */
 		ActionResult onBiomePlace(BiomeSource source, Registry<Biome> registry, final Biome original, AtomicReference<Biome> biome, int genX, int genZ);
 	}
