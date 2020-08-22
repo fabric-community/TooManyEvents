@@ -18,6 +18,9 @@
       "io.github.fabriccommunity.events.test.BiomePlacementTest",
       "io.github.fabriccommunity.events.test.EntitySpawnTest",
       "io.github.fabriccommunity.events.test.PlayerInteractionTest"
+    ],
+    "client": [
+      "io.github.fabriccommunity.events.test.client.ClientPlayerInteractionTest"
     ]
   },
 
