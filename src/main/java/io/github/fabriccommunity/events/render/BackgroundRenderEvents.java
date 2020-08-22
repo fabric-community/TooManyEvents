@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.world.biome.Biome;
 
-public final class BackgroundRenderCallback {
+public final class BackgroundRenderEvents {
 	/**
 	 * Event for altering the biome fog color.
 	 */
