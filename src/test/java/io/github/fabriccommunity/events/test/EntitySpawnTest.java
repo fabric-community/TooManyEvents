@@ -9,6 +9,9 @@ import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.Vec3d;
 
+/**
+ * @author Valoeghese
+ */
 public class EntitySpawnTest implements ModInitializer {
 	public static final boolean ENABLED = true;
 

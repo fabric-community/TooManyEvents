@@ -10,7 +10,13 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.ServerWorldAccess;
 
-public class EntitySpawnImpl {
+public final class EntitySpawnImpl {
+	private EntitySpawnImpl() {
+	}
+
+	/**
+	 * @author Valoeghese
+	 */
 	public static boolean spawnEntityZ(ServerWorld self, Entity entity) {
 		AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
 		ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, self, SpawnReason.COMMAND);
@@ -26,6 +32,9 @@ public class EntitySpawnImpl {
 		return false;
 	}
 
+	/**
+	 * @author Valoeghese
+	 */
 	public static void spawnEntityV(ServerWorldAccess self, Entity entity) {
 		AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
 		ActionResult result = EntitySpawnCallback.PRE.invoker().onEntitySpawnPre(entity, currentEntity, self, SpawnReason.NATURAL);
@@ -37,6 +46,9 @@ public class EntitySpawnImpl {
 		}
 	}
 
+	/**
+	 * @author Valoeghese
+	 */
 	public static Entity spawnEntityE(Entity entity, ServerWorld serverWorld, SpawnReason spawnReason) {
 		if (entity != null) {
 			AtomicReference<Entity> currentEntity = new AtomicReference<>(entity);
@@ -52,6 +64,9 @@ public class EntitySpawnImpl {
 		return entity;
 	}
 
+	/**
+	 * @author Valoeghese
+	 */
 	public static ActionResult eventPre(Entity original, AtomicReference<Entity> entity, ServerWorldAccess world, SpawnReason reason, Pre[] listeners) {
 		for (EntitySpawnCallback.Pre callback : listeners) {
 			ActionResult result = callback.onEntitySpawnPre(original, entity, world, reason);

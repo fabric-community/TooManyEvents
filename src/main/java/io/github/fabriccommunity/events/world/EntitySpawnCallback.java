@@ -46,7 +46,7 @@ public final class EntitySpawnCallback {
 		 * <li>{@code FAIL} cancel spawning the entity.
 		 * </ul>
 		 */
-		ActionResult onEntitySpawnPre(Entity original, AtomicReference<Entity> entity, ServerWorldAccess world, SpawnReason reason);
+		ActionResult onEntitySpawnPre(final Entity original, AtomicReference<Entity> entity, ServerWorldAccess world, SpawnReason reason);
 	}
 
 	/**

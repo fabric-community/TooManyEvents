@@ -20,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 public class MixinEntityType {
 	@Overwrite
 	public Entity spawn(ServerWorld serverWorld, CompoundTag itemTag, Text name, PlayerEntity player, BlockPos pos, SpawnReason spawnReason, boolean alignPosition, boolean invertY) {
+		// TODO can we make this not an overwrite?
 		Entity entity = ((EntityType) (Object) this).create(serverWorld, itemTag, name, player, pos, spawnReason, alignPosition, invertY);
 		return EntitySpawnImpl.spawnEntityE(entity, serverWorld, spawnReason);
 	}
