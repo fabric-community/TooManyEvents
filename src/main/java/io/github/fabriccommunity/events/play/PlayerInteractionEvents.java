@@ -34,7 +34,7 @@ public final class PlayerInteractionEvents {
 		 * @param original the original experience to be gained.
 		 * @param experience the experience which will be gained. If the value stored in this is different to {@code original}, a mod has modified the experience gained.
 		 * @return
-		 * {@code SUCCESS} or {@code CONSUME} to cancel further event processing and add the experinece in {@code experience}.
+		 * {@code SUCCESS} or {@code CONSUME} to cancel further event processing and add the experience in {@code experience}.
 		 * {@code PASS} pass event handling on to further processing. If all listeners pass, it is treated as a {@code SUCCESS}.
 		 * {@code FAIL} to cancel further event processing and add the original experience.
 		 */
