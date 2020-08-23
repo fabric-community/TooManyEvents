@@ -37,6 +37,18 @@ public final class ClientPlayerInteractionEvents {
         return ActionResult.PASS;
     });
 
+    public static final Event<TypeLetter> TYPE_LETTER = EventFactory.createArrayBacked(TypeLetter.class, listeners -> (chr, keycode) -> {
+        for (TypeLetter listener : listeners) {
+            ActionResult result = listener.onType(chr, keycode);
+
+            if (result != ActionResult.PASS) {
+                return result;
+            }
+        }
+
+        return ActionResult.PASS;
+    });
+
     /**
      * An event which runs when the player presses down the attack key (left mouse button by default) in-game.
      * This event does NOT run when the player has a screen of any sort opened, and is called *before* AttackBlockEvent and AttackEntityEvent.
@@ -75,5 +87,24 @@ public final class ClientPlayerInteractionEvents {
          * {@code FAIL} cancels further event processing without swinging the player's arms.
          */
         ActionResult onAttackKeyHold(ClientPlayerEntity player, /* @Nullable */ HitResult hitResult);
+    }
+
+    /**
+     * An event which runs when the player types a letter in the chat text field.
+     * @author leocth
+     */
+    @FunctionalInterface
+    public interface TypeLetter {
+        /**
+         * @param chr the character being typed
+         * @param keyCode the keycode being pressed
+         * @see org.lwjgl.glfw.GLFW for more info on key codes.
+         *
+         * @return
+         * {@code SUCCESS} or {@code CONSUME} cancels further event processing and the character is written into the text field.
+         * {@code PASS} pass event handling on to further processing. If all listeners pass, functions exactly like {@code SUCCESS} and {@code CONSUME}
+         * {@code FAIL} cancels further event processing and disallows the character to be written into the text field.
+         */
+        ActionResult onType(char chr, int keyCode);
     }
 }

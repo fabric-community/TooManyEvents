@@ -17,7 +17,8 @@
   "client": [
     "client.MixinBackgroundRenderer",
     "client.MixinWorldRenderer",
-    "client.MixinMinecraftClient"
+    "client.MixinMinecraftClient",
+    "client.MixinTextFieldWidget"
   ],
   "injectors": {
     "defaultRequire": 1
