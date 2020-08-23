@@ -25,7 +25,7 @@ public abstract class MixinBlockItem {
 	 * @reason getPlacementState is often overriden (has two vanilla overrides, could have more in modded). Therefore using a redirect rather than inject at return in {@code getPlacementState} is more compatible with other mods.
 	 */
 	@Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/item/BlockItem;getPlacementState(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/block/BlockState;"),
-			method = "getPlacementState")
+			method = "place")
 	private BlockState onGetPlacementState(BlockItem self, ItemPlacementContext placementContext) {
 		BlockState original = this.getPlacementState(placementContext);
 		AtomicReference<BlockState> state = new AtomicReference<>(original);
