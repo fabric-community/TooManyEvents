@@ -18,7 +18,7 @@ public final class InteractionsImpl {
 	public static ItemStack eatFood(LivingEntity self, World world, ItemStack original) {
 		AtomicReference<ItemStack> eaten = new AtomicReference<>(original);
 		AtomicReference<ItemStack> moddedResultReference = new AtomicReference<>();
-		ActionResult eventResult = ItemEvents.EAT_FOOD.invoker().onPlayerEat(self, world, original, eaten, moddedResultReference);
+		ActionResult eventResult = ItemEvents.EAT_FOOD.invoker().onEatFood(self, world, original, eaten, moddedResultReference);
 
 		ItemStack defaultResult = eventResult == ActionResult.FAIL ? original : self.eatFood(world, eaten.get());
 		ItemStack moddedResult = moddedResultReference.get();
