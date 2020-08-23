@@ -102,7 +102,7 @@ public final class ClientPlayerInteractionEvents {
          *
          * @return
          * {@code SUCCESS} or {@code CONSUME} cancels further event processing and the character is written into the text field.
-         * {@code PASS} pass event handling on to further processing. If all listeners pass, functions exactly like {@code SUCCESS} and {@code CONSUME}
+         * {@code PASS} pass event handling on to further processing. If all listeners pass, functions exactly the same as {@code SUCCESS} and {@code CONSUME}.
          * {@code FAIL} cancels further event processing and disallows the character to be written into the text field.
          */
         ActionResult onType(char chr, int keyCode);
