@@ -9,7 +9,7 @@ import net.minecraft.util.ActionResult;
  * @author leocth
  */
 public class ClientPlayerInteractionTest implements ClientModInitializer {
-    public static final boolean ENABLED = true;
+    public static final boolean ENABLED = false;
 
     @Override
     public void onInitializeClient() {
