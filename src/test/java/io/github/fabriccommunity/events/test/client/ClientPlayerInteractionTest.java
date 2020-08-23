@@ -22,6 +22,12 @@ public class ClientPlayerInteractionTest implements ClientModInitializer {
                 player.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.0f);
                 return ActionResult.FAIL;
             });
+            // message redirector :yeefuckinhaw:
+            ClientPlayerInteractionEvents.TYPE_LETTER.register(((chr, keyCode) -> {
+                System.out.print(chr);
+                return ActionResult.FAIL;
+            }
+            ));
         }
     }
 }
