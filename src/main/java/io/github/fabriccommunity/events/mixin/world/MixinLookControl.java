@@ -17,6 +17,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(LookControl.class)
 public abstract class MixinLookControl {
 
+    @Shadow abstract float changeAngle(float from, float to, float max);
+
     @Redirect(
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ai/control/LookControl;changeAngle(FFF)F", ordinal = 0),
             method = "tick"
@@ -24,7 +26,7 @@ public abstract class MixinLookControl {
     private float redirectHeadChangeAngle(LookControl self, float headYaw, float targetYaw, float yawSpeed) {
         return (entity instanceof ChickenEntity)
                 ? ChickenTurnLeftImpl.hackChangeAngle((ChickenEntity) entity, headYaw, targetYaw, yawSpeed, ChickenTurnLeftCallback.TurnLeftType.HEAD)
-                : ChickenTurnLeftImpl.noHackChangeAngle(headYaw, targetYaw, yawSpeed);
+                : this.changeAngle(headYaw, targetYaw, yawSpeed);
     }
 
     @Redirect(
@@ -34,7 +36,7 @@ public abstract class MixinLookControl {
     private float redirectBodyChangeAngle(LookControl self, float headYaw, float targetYaw, float yawSpeed) {
         return (entity instanceof ChickenEntity)
                 ? ChickenTurnLeftImpl.hackChangeAngle((ChickenEntity) entity, headYaw, targetYaw, yawSpeed, ChickenTurnLeftCallback.TurnLeftType.BODY)
-                : ChickenTurnLeftImpl.noHackChangeAngle(headYaw, targetYaw, yawSpeed);
+                : this.changeAngle(headYaw, targetYaw, yawSpeed);
     }
 
     @Shadow @Final private MobEntity entity;

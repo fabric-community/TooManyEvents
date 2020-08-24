@@ -17,6 +17,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(MoveControl.class)
 public abstract class MixinMoveControl {
 
+    @Shadow abstract float changeAngle(float from, float to, float max);
+
     @Redirect(
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ai/control/MoveControl;changeAngle(FFF)F", ordinal = 0),
             method = "tick"
@@ -24,7 +26,7 @@ public abstract class MixinMoveControl {
     private float redirectBodyChangeAngle(MoveControl self, float headYaw, float targetYaw, float yawSpeed) {
         return (entity instanceof ChickenEntity)
                 ? ChickenTurnLeftImpl.hackChangeAngle((ChickenEntity) entity, headYaw, targetYaw, yawSpeed, ChickenTurnLeftCallback.TurnLeftType.BODY)
-                : ChickenTurnLeftImpl.noHackChangeAngle(headYaw, targetYaw, yawSpeed);
+                : this.changeAngle(headYaw, targetYaw, yawSpeed);
     }
 
     @Shadow @Final private MobEntity entity;
