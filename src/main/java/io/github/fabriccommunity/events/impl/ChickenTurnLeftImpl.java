@@ -27,10 +27,4 @@ public final class ChickenTurnLeftImpl {
         }
         return MathHelper.wrapDegrees(h);
     }
-
-    public static float noHackChangeAngle(float headYaw, float targetYaw, float yawSpeed) {
-        float f = MathHelper.subtractAngles(headYaw, targetYaw);
-        float g = MathHelper.clamp(f, -yawSpeed, yawSpeed);
-        return MathHelper.wrapDegrees(headYaw + g);
-    }
 }
