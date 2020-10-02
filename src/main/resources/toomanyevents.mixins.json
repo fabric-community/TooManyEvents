@@ -15,11 +15,14 @@
     "spawn.MixinEntityType",
     "spawn.MixinMobSpawnerLogic",
     "spawn.MixinSpawnHelper",
-    "spawn.MixinSummonCommand"
+    "spawn.MixinSummonCommand",
+    "world.MixinLookControl",
+    "world.MixinMoveControl"
   ],
   "client": [
     "client.MixinBackgroundRenderer",
     "client.MixinMinecraftClient",
+    "client.MixinTextFieldWidget",
     "client.MixinWorldRenderer"
   ],
   "injectors": {
