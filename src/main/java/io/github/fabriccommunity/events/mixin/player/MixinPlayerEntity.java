@@ -31,7 +31,7 @@ public class MixinPlayerEntity {
 		}
 	}
 
-	@Inject(at = @At("HEAD"), method = "wakeUp")
+	@Inject(at = @At("HEAD"), method = "wakeUp(ZZ)V")
 	private void wakeUp(boolean bl, boolean updateSleepingPlayers, CallbackInfo info) {
 		PlayerInteractionEvents.WAKE_UP.invoker().onWakeUp((PlayerEntity) (Object) this, updateSleepingPlayers, bl);
 	}
