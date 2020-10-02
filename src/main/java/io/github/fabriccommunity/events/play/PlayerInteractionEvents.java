@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 
 /**
@@ -73,6 +74,15 @@ public final class PlayerInteractionEvents {
 		}
 
 		return ActionResult.PASS;
+	});
+
+	/**
+	 * Event that runs when players wake up.
+	 */
+	public static final Event<WakeUp> WAKE_UP = EventFactory.createArrayBacked(WakeUp.class, listeners -> (player, updateSleepingPlayers, setSleepTimerTo0) -> {
+		for (WakeUp listener : listeners) {
+			listener.onWakeUp(player, updateSleepingPlayers, setSleepTimerTo0);
+		}
 	});
 
 	/**
@@ -157,5 +167,19 @@ public final class PlayerInteractionEvents {
 		 * </ul>
 		 */
 		ActionResult onRestoreSaturation(HungerManager hungerManager, final float original, WrappedFloat saturation);
+	}
+
+	/**
+	 * An event which runs when a player wakes up.
+	 * @author Valoeghese
+	 */
+	@FunctionalInterface
+	public interface WakeUp {
+		/**
+		 * @param player the player waking up.
+		 * @param updateSleepingPlayers whether to run {@link ServerWorld#updateSleepingPlayers} if server side.
+		 * @param whether to set the sleep timer to 0 instead of 100.
+		 */
+		void onWakeUp(PlayerEntity player, boolean updateSleepingPlayers, boolean setSleepTimerTo0);
 	}
 }

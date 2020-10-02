@@ -4,7 +4,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import io.github.fabriccommunity.events.play.PlayerInteractionEvents;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,5 +29,10 @@ public class MixinPlayerEntity {
 		} else {
 			return experience.get();
 		}
+	}
+
+	@Inject(at = @At("HEAD"), method = "wakeUp")
+	private void wakeUp(boolean bl, boolean updateSleepingPlayers, CallbackInfo info) {
+		PlayerInteractionEvents.WAKE_UP.invoker().onWakeUp((PlayerEntity) (Object) this, updateSleepingPlayers, bl);
 	}
 }
