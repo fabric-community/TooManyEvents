@@ -138,7 +138,7 @@ public final class PlayerInteractionEvents {
 		/**
 		 * @param hungerManager the hunger manager.
 		 * @param original the original food level that was going to be added to the hunger manager.
-		 * @param food the food level to be added to the hunger manager. If the value contained in this does not equal {@code original}, the value has been modded.
+		 * @param hunger the food level to be added to the hunger manager. If the value contained in this does not equal {@code original}, the value has been modded.
 		 * @return
 		 * <ul>
 		 * <li>{@code SUCCESS} or {@code CONSUME} to cancel further event processing and add the food level in {@code hunger}.<br/>
@@ -178,7 +178,7 @@ public final class PlayerInteractionEvents {
 		/**
 		 * @param player the player waking up.
 		 * @param updateSleepingPlayers whether to run {@link ServerWorld#updateSleepingPlayers} if server side.
-		 * @param whether to set the sleep timer to 0 instead of 100.
+		 * @param setSleepTimerTo0 whether to set the sleep timer to 0 instead of 100.
 		 */
 		void onWakeUp(PlayerEntity player, boolean updateSleepingPlayers, boolean setSleepTimerTo0);
 	}
