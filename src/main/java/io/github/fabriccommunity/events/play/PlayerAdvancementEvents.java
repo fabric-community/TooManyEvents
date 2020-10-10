@@ -39,10 +39,10 @@ public class PlayerAdvancementEvents {
 	 */
 	public static final Event<ItemDurabilityChanged> ITEM_DURABILITY_CHANGED_WILDCARD = EventFactory.createArrayBacked(ItemDurabilityChanged.class,
 			listeners -> (player, stack, damage) -> {
-		for (ItemDurabilityChanged listener : listeners) {
-			listener.onItemDurabilityChange(player, stack, damage);
-		}
-	});
+				for (ItemDurabilityChanged listener : listeners) {
+					listener.onItemDurabilityChange(player, stack, damage);
+				}
+			});
 
 	/**
 	 * An event run when the durability of a stack of <item> is changed.
@@ -58,10 +58,10 @@ public class PlayerAdvancementEvents {
 	 */
 	public static final Event<PlayerHurtEntity> PLAYER_HURT_ENTITY_WILDCARD = EventFactory.createArrayBacked(PlayerHurtEntity.class,
 			listeners -> (attacker, victim, source, dealt, taken, blocked) -> {
-		for (PlayerHurtEntity listener : listeners) {
-			listener.onPlayerHurtEntity(attacker, victim, source, dealt, taken, blocked);
-		}
-	});
+				for (PlayerHurtEntity listener : listeners) {
+					listener.onPlayerHurtEntity(attacker, victim, source, dealt, taken, blocked);
+				}
+			});
 
 	/**
 	 * An event run when a player hurts a specific type of entity.
@@ -77,10 +77,10 @@ public class PlayerAdvancementEvents {
 	 */
 	public static final Event<PlayerKilledEntity> PLAYER_KILLED_ENTITY_WILDCARD = EventFactory.createArrayBacked(PlayerKilledEntity.class,
 			listeners -> (killer, victim, source) -> {
-		for (PlayerKilledEntity listener : listeners) {
-			listener.onPlayerKillEntity(killer, victim, source);
-		}
-	});
+				for (PlayerKilledEntity listener : listeners) {
+					listener.onPlayerKillEntity(killer, victim, source);
+				}
+			});
 
 	/**
 	 * An event run when a play kills a specific type of entity.

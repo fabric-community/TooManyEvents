@@ -6,8 +6,10 @@
   "name": "Too Many Events",
   "description": "More events for modders to use",
   "authors": [
-    "Valoeghese",
-	"HalfOf2"
+	"b0undary",
+	"HalfOf2",
+    "LeoCTH",
+    "Valoeghese"
   ],
 
   "license": "MIT",

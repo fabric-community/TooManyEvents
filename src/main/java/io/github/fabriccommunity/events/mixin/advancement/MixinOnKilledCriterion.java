@@ -12,6 +12,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 
+/**
+ * @author B0undaryBreaker
+ */
 @Mixin(OnKilledCriterion.class)
 public class MixinOnKilledCriterion {
 	@Inject(method = "trigger", at = @At("HEAD"))

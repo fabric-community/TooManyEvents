@@ -19,7 +19,8 @@
     "spawn.MixinEntityType",
     "spawn.MixinMobSpawnerLogic",
     "spawn.MixinSpawnHelper",
-    "spawn.MixinSummonCommand"
+    "spawn.MixinSummonCommand",
+    "world.MixinChunkGenerator"
   ],
   "client": [
     "client.MixinBackgroundRenderer",
