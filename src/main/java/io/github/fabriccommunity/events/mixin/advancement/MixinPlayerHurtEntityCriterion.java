@@ -11,6 +11,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 
+/**
+ * @author b0undary
+ */
 @Mixin(PlayerHurtEntityCriterion.class)
 public class MixinPlayerHurtEntityCriterion {
 	@Inject(method = "trigger", at = @At("HEAD"))

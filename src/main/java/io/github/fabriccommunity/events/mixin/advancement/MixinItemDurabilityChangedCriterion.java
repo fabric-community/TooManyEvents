@@ -10,6 +10,9 @@ import net.minecraft.advancement.criterion.ItemDurabilityChangedCriterion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 
+/**
+ * @author B0undaryBreaker
+ */
 @Mixin(ItemDurabilityChangedCriterion.class)
 public class MixinItemDurabilityChangedCriterion {
 	@Inject(method = "trigger", at = @At("HEAD"))

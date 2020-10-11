@@ -11,6 +11,9 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 
+/**
+ * @author B0undaryBreaker
+ */
 @Mixin(InventoryChangedCriterion.class)
 public class MixinInventoryChangedCriterion {
 	@Inject(method = "trigger(Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/entity/player/PlayerInventory;Lnet/minecraft/item/ItemStack;III)V", at = @At("HEAD"))
