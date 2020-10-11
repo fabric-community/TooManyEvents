@@ -4,6 +4,10 @@
   "package": "io.github.fabriccommunity.events.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "advancement.MixinInventoryChangedCriterion",
+    "advancement.MixinItemDurabilityChangedCriterion",
+    "advancement.MixinOnKilledCriterion",
+    "advancement.MixinPlayerHurtEntityCriterion",
     "biomegen.MixinMultiNoiseBiomeSource",
     "biomegen.MixinTheEndBiomeSource",
     "biomegen.MixinVanillaLayeredBiomeSource",
@@ -16,6 +20,7 @@
     "spawn.MixinMobSpawnerLogic",
     "spawn.MixinSpawnHelper",
     "spawn.MixinSummonCommand",
+    "world.MixinChunkGenerator",
     "world.MixinLookControl",
     "world.MixinMoveControl"
   ],
