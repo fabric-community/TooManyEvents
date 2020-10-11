@@ -17,6 +17,7 @@
     "main": [
       "io.github.fabriccommunity.events.test.BiomePlacementTest",
       "io.github.fabriccommunity.events.test.BlockPlaceTest",
+      "io.github.fabriccommunity.events.test.ChickenTurnLeftTest",
       "io.github.fabriccommunity.events.test.ChunkGenTest",
       "io.github.fabriccommunity.events.test.FoodTest",
       "io.github.fabriccommunity.events.test.EntitySpawnTest",
